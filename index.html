@@ -4,6 +4,24 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Willovita — A Private Retreat in Winter Springs, Florida</title>
+<script>
+  function checkGate() {
+    var val = document.getElementById('gateInput').value;
+    var err = document.getElementById('gateError');
+    if (val === 'Willovita2026') {
+      sessionStorage.setItem('wv_access', 'granted');
+      var gate = document.getElementById('siteGate');
+      gate.style.transition = 'opacity .5s ease';
+      gate.style.opacity = '0';
+      setTimeout(function() { gate.style.display = 'none'; }, 500);
+      document.body.style.overflow = '';
+    } else {
+      err.style.display = 'block';
+      document.getElementById('gateInput').value = '';
+      document.getElementById('gateInput').focus();
+    }
+  }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
@@ -337,7 +355,7 @@
       style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);padding:14px 18px;font-family:'Jost',system-ui,sans-serif;font-size:.82rem;color:#fff;letter-spacing:.06em;outline:none;text-align:center;margin-bottom:14px;"
       onkeydown="if(event.key==='Enter')checkGate()" />
     <button onclick="checkGate()" style="width:100%;background:#3d4a30;border:none;cursor:pointer;padding:14px;font-family:'Jost',system-ui,sans-serif;font-size:.7rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:#fff;">Enter</button>
-    <p style="margin-top:28px;font-family:'Cormorant Garamond',Georgia,serif;font-size:.85rem;font-style:italic;color:rgba(255,255,255,.3);">For preview access contact<br/>events@willovita.com</p>
+    <p style="margin-top:28px;font-family:'Cormorant Garamond',Georgia,serif;font-size:.85rem;font-style:italic;color:rgba(255,255,255,.3);">For preview access contact<br/><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe9b889b908a8dbe899792929188978a9fd09d9193">[email&#160;protected]</a></p>
   </div>
 </div>
 
@@ -625,7 +643,7 @@
   </nav>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ── SITE GATE
   (function() {
     if (sessionStorage.getItem('wv_access') === 'granted') {
@@ -726,10 +744,4 @@
 
   function doLogout() {
     document.getElementById('guestPortal').style.display = 'none';
-    document.getElementById('authEmail').value = '';
-    document.getElementById('authPassword').value = '';
-    document.body.style.overflow = '';
-  }
-
-  // Wire up the nav "Guest Sign In" button
-  document.querySelector('.nav-cta').addEventListener('click', fun
+    document.getElementById('aut
